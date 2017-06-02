@@ -27,7 +27,7 @@
     <div class="row col-xs-12 col-md-8 lg-6 offset-lg-3">
         
         <h1>Log In</h1>
-        
+         
         <form class="form-horizontal" role="form" method="post">
             <div class="form-group">
                 <label for="Email">Email address:</label>
@@ -48,7 +48,7 @@
         <a href="#">Forgot Password?</a><br>
         
         <h2>Not A Member?</h2><br>
-        <a href="http://dianeselvy.com/gig-central/profiles/add">Register</a>
+        <a href="<?=base_url()?>profiles/add">Register</a>
         
     </div><!-- end row form -->
 </div><!-- end .container -->

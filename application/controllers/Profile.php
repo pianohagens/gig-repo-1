@@ -138,7 +138,7 @@ class Profile extends CI_Controller {
             $config['max_height']          = 768;
             $config['file_name']          = date('Ymdhis');
             $this->load->library('upload', $config);
-            $pic_id ="picID.jpg";
+            //$pic_id ="picID.jpg";
             // Alternately you can set preferences by calling the ``initialize()`` method. Useful if you auto-load the class:
             
             $this->upload->initialize($config);
@@ -148,7 +148,10 @@ class Profile extends CI_Controller {
                                 $data = array('upload_data' => $this->upload->data());
                                 $pic_id = $this->upload->data('file_name');
                         }
-                
+				else {
+					$this->load->view('profiles/add', $data);
+					//!!Form pushes and then returns, need a better error handle for pic
+				}
                     
             ;
             // build array for the model
