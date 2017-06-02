@@ -68,6 +68,10 @@
                     <b>Date Posted: </b>
                     <?php echo date('Y-m-d H:i:s'); ?>
                 </li>
+                 <li>
+                    <b>Date Closed: </b>
+                    <?php echo $gig['dateClosed']; ?>
+                </li>
             </ul>
         </div>
         </div>
