@@ -80,6 +80,20 @@ class Gig_model extends CI_Model {
     public function add_gig()
     {
         $this->load->helper('url');
+        $this->load->database();
+        $i = 0;
+        while ($i<1) {
+            $query = $this->db->query('SELECT * FROM Company');
+            return $query->result_array();
+            $i++;
+        }
+
+        foreach($query->result_array() as $row) {
+            $data[$row['id']] = $row['Name'];
+        }
+
+        return $data;
+    
 
         $data = array(
             'Name' => $this->input->post('Name'),

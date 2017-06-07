@@ -33,6 +33,9 @@
 
             </div>
             <div class="form-group">
+            <?php
+                echo form_dropdown('company_dropdown', $row['Name'], '');
+            ?>
                 <label for="Name" class="col-lg-3 control-label"><em>Company Name</em></label>
                     <div class="col-md-6">
                         <?php echo form_error('Name'); ?>

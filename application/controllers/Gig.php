@@ -91,7 +91,15 @@ class Gig extends CI_Controller
             $this->load->view('gigs/success', $data);
 
         }
+
+        // for the dropdown menu
+            // meant to prevent duplicate companies from being added to the DB
+        $data[companies] = $this->gig_model->add_gig();
+        $this->load->view('gigs/add', $data);
+
+
     }#end function add()
+
     public function search()
     {
         $keyword = $this->input->post('keyword');
