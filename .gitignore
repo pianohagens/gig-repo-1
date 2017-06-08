@@ -44,3 +44,6 @@ Thumbs.db
 *.o
 *.so
 >>>>>>> b9592866d96cc8adef613696eb7ec3d6af833f55
+PHPWebProject1.phpproj
+*.sln
+.vs/PHPWebProject1/v14/.suo

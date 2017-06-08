@@ -81,19 +81,6 @@ class Gig_model extends CI_Model {
     {
         $this->load->helper('url');
         $this->load->database();
-        $i = 0;
-        while ($i<1) {
-            $query = $this->db->query('SELECT * FROM Company');
-            return $query->result_array();
-            $i++;
-        }
-
-        foreach($query->result_array() as $row) {
-            $data[$row['id']] = $row['Name'];
-        }
-
-        return $data;
-    
 
         $data = array(
             'Name' => $this->input->post('Name'),
@@ -108,6 +95,7 @@ class Gig_model extends CI_Model {
         
         $this->db->insert('Company', $data);
         $companyid = $this->db->insert_id();
+
         //$this->db->order_by("CompanyID", "desc");
         //$this->db->limit(0, 1);
         //$query = $this->db->get('Company');
@@ -146,6 +134,14 @@ class Gig_model extends CI_Model {
 
     }#end of add_gig()
 
+    public function add_gig_dropdown()
+    {
+    	$query = $this->db->query("SELECT Name FROM Company");
+		
+        $dropdown = $query->result_array();
+
+        return $dropdown;
+    }#end of add_gig_dropdown
 
     public function searchGigs($keyword = null)
     {

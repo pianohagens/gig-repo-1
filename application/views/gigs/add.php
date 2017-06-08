@@ -17,10 +17,8 @@
 //error messages for form validation
 
 ?>
-
-
 <?php $this->load->view($this->config->item('theme') . 'headerjqueryui'); ?>
-
+<?php var_dump($dropdown); die;?>
 <div class="container">
   <div class="col-lg-10">
 
@@ -33,9 +31,14 @@
 
             </div>
             <div class="form-group">
-            <?php
-                echo form_dropdown('company_dropdown', $row['Name'], '');
-            ?>
+            <select class="form-control" id="select">
+                <?php
+                    foreach ($dropdown as $row) 
+                        {   
+   		                    echo "<option>" . $row['Name'] . "</option>";   
+	                    }
+                ?>
+            </select>
                 <label for="Name" class="col-lg-3 control-label"><em>Company Name</em></label>
                     <div class="col-md-6">
                         <?php echo form_error('Name'); ?>
