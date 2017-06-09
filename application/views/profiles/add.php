@@ -31,7 +31,7 @@ $this->load->view($this->config->item('theme') . 'header'); //Loads Bootswatch t
 -->
 
 <div class="container">
-
+	
   <div class="col-lg-10">
 
 
@@ -49,8 +49,6 @@ $this->load->view($this->config->item('theme') . 'header'); //Loads Bootswatch t
             <label for="i_am_a" class="col-lg-3 control-label">
                     
             </label>
-			
-			<!--static picture-->
             <div class="col-lg-6">
                 <img src="<?=base_url()?>img/picID.jpg" alt="Picture ID" id="pic_id">
             </div>
@@ -59,8 +57,9 @@ $this->load->view($this->config->item('theme') . 'header'); //Loads Bootswatch t
             <label for="i_am_a" class="col-lg-3 control-label">
                     
             </label>
-            
-			<!--below for picture upload-->
+			<!-- PIC UPLOAD -->
+          <?php //error handling
+				echo $this->session->flashdata('error');?>
           <div class="col-lg-6">
             <input type="file" class="form-control"  name="userfile" id="userfile">
           </div>

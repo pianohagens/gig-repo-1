@@ -109,51 +109,66 @@ class Profile extends CI_Controller {
 
 	}#end view()
     
-    
     /**
-	 * add method for Answer class. 
-	 *
-	 * @return void 
-	 * @todo none
-	 */ 
-    
-    public function add()
-    {
-    
-            $data['title'] = 'Add Profile';
-            if (isset($_POST['Submit'])){  
-            
-            if ($this->form_validation->run() == FALSE) // validation hasn't been passed
-            { 
-                $this->load->view('profiles/add', $data);
-            }
-            else // passed validation proceed to post success logic
-            {
-            
-            //some config for upload photo
-            $config['upload_path']          = './img/';
+	*validate_image method for add and edit
+	*
+	*@return false or data
+	*@todo none
+	*/
+  
+	public function validate_image(){
+		//if image uploaded
+		if(!empty($_FILES['userfile']['name'])){
+			//image params
+			$config['upload_path']          = './img/';
             $config['allowed_types']       = 'gif|jpg|png';
             $config['max_size']            = 500000;
             $config['max_width']           = 1024;
             $config['max_height']          = 768;
             $config['file_name']          = date('Ymdhis');
+			//upload library
             $this->load->library('upload', $config);
-            //$pic_id ="picID.jpg";
-            // Alternately you can set preferences by calling the ``initialize()`` method. Useful if you auto-load the class:
-            
-            $this->upload->initialize($config);
-                //upload image files
-                if ($this->upload->do_upload('userfile'))
-                        {
-                                $data = array('upload_data' => $this->upload->data());
-                                $pic_id = $this->upload->data('file_name');
-                        }
-				else {
-					$this->load->view('profiles/add', $data);
-					//!!Form pushes and then returns, need a better error handle for pic
+				//if image conflicts with params
+                if (!$this->upload->do_upload('userfile')){
+					//use flashdata to send error message					
+					$this->session->set_flashdata('error', $this->upload->display_errors());
+					//FALSE return stops validation, stops form from submitting
+					return FALSE;
 				}
-                    
-            ;
+			else{
+				//send the $pic_id from upload, all in session
+				$this->session->set_flashdata('pic_id', $this->upload->data('file_name'));
+			}
+		}
+	}
+    
+	  /**
+	 * add method for Answer class. 
+	 *
+	 * @return void 
+	 * @todo none
+	 */ 
+    public function add()
+    {
+    
+		
+            $data['title'] = 'Add Profile';
+            if (isset($_POST['Submit'])){  
+            	//include 'userfile' in validation rules
+				$this->form_validation->set_rules('userfile', 'Image', 'callback_validate_image');
+				
+            if ($this->form_validation->run() == FALSE) // validation hasn't been passed
+            { 
+                $this->load->view('profiles/add', $data);
+            }
+            else // passed validation proceed to post success logic
+            {          	
+				//get image file from validate_image() method
+				$pic_id = $this->session->flashdata('pic_id');
+				//if no image uploaded, use generic
+				if(empty($_FILES['userfile']['name'])){									
+					$pic_id="picID.jpg";
+				}
             // build array for the model
             $form_data = array(
                 'i_am_a' => set_value('i_am_a'),
@@ -164,23 +179,21 @@ class Profile extends CI_Controller {
                 'email'      => set_value('email'),
                 'bio'  => set_value('bio'),
                 'subscribed_to_newsletters' => set_value('subscribed_to_newsletters')
-                
             );
             //hash password here
             $form_data['password'] = password_hash($form_data['password'], PASSWORD_BCRYPT);
             // run insert model to write data to db
-            
             if ($this->profile_model->SaveForm($form_data) == TRUE) // the information has therefore been successfully saved in the db
             {
                 $data['title'] = 'Success!';
                 $this->load->view('profiles/success', $data);   // or whatever logic needs to occur
+				//THIS PAGE NEEDS WORK (profiles/success)
             }
             else
             {
                 echo 'An error occurred saving your information. Please try again later';
                 // Or whatever error handling is necessary
             }
-            
            }
        }else{//if the form not submit
             $this->load->view('profiles/add',$data);   
