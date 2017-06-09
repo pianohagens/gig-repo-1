@@ -156,6 +156,13 @@ class Profile extends CI_Controller {
             if (isset($_POST['Submit'])){  
             	//include 'userfile' in validation rules
 				$this->form_validation->set_rules('userfile', 'Image', 'callback_validate_image');
+				 $this->form_validation->set_rules('i_am_a', 'I am a', 'required');
+                $this->form_validation->set_rules('first_name', 'First Name', 'required');
+                $this->form_validation->set_rules('last_name', 'Last Name', 'required');
+                $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+                $this->form_validation->set_rules('password', 'Password', 'required');
+				$this->form_validation->set_rules('re_password', 'Password', 'required|matches[password]');
+                $this->form_validation->set_rules('bio', 'bio', 'required');  
 				
             if ($this->form_validation->run() == FALSE) // validation hasn't been passed
             { 

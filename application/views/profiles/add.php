@@ -54,12 +54,12 @@ $this->load->view($this->config->item('theme') . 'header'); //Loads Bootswatch t
             </div>
         </div>
         <div class="form-group">
-            <label for="i_am_a" class="col-lg-3 control-label">
-                    
-            </label>
 			<!-- PIC UPLOAD -->
-          <?php //error handling
-				echo $this->session->flashdata('error');?>
+          	<?php //error handling
+				echo '<span style="text-align:center;color:red;">' . $this->session->flashdata('error') . '</span>';?>
+            <label for="i_am_a" class="col-lg-3 control-label">
+             Image       
+            </label>
           <div class="col-lg-6">
             <input type="file" class="form-control"  name="userfile" id="userfile">
           </div>
