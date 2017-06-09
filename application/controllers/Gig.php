@@ -77,7 +77,8 @@ class Gig extends CI_Controller
         $this->load->library('form_validation');
         $this->form_validation->set_message('check_dropdown', 'You need to select an employment type.');
         $data['title'] = 'Add a new gig';
-        $dropdown = $this->gig_model->add_gig_dropdown();
+//         $dropdown = $this->gig_model->add_gig_dropdown();
+        $data['companies'] = $this->gig_model->get_companies();
         
         if ($this->form_validation->run() == FALSE)
         {//create form to add gigs
