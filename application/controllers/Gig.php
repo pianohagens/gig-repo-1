@@ -75,11 +75,12 @@ class Gig extends CI_Controller
     {
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->form_validation->set_message('check_dropdown', 'You need to select an employment type.');
+
         $data['title'] = 'Add a new gig';
-//         $dropdown = $this->gig_model->add_gig_dropdown();
         $data['companies'] = $this->gig_model->get_companies();
-        
+		
+        $this->form_validation->set_rules('EmploymentType', 'Employment Type', 'callback_checkDropdown');
+
         if ($this->form_validation->run() == FALSE)
         {//create form to add gigs
             $this->load->view('gigs/add', $data); 
@@ -194,9 +195,18 @@ class Gig extends CI_Controller
         }      
     }#end of function edit
 
-    public function check_dropdown($post_dropdown){
-        return $post_dropdown == '0' ? FALSE : TRUE;
-    }
+	public function checkDropdown($dropdown_selection)
+	{
+		if ($dropdown_selection === 0)
+		{
+   		     $this->form_validation->set_message('EmploymentType', 'You need to select an employment type.');
+			 return FALSE;
+		}	
+		else
+		{
+			return TRUE;
+		}
+	}
 
 
 }#end Gigs class/controller
