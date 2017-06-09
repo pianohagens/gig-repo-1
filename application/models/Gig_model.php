@@ -134,14 +134,22 @@ class Gig_model extends CI_Model {
 
     }#end of add_gig()
 
-    public function add_gig_dropdown()
-    {
-    	$query = $this->db->query("SELECT Name FROM Company");
+//     public function add_gig_dropdown()
+//     {
+//     	$query = $this->db->query("SELECT Name FROM Company");
 		
-        $dropdown = $query->result_array();
+//         $dropdown = $query->result_array();
 
-        return $dropdown;
-    }#end of add_gig_dropdown
+//         return $dropdown;
+//     }#end of add_gig_dropdown
+	
+    function get_companies()
+    {
+        $this->db->select('*');
+        $this->db->from('Company');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
     public function searchGigs($keyword = null)
     {
