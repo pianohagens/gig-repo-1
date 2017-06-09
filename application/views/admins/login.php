@@ -51,10 +51,7 @@
         
         <h2>Not A Member?</h2><br>
         <a href="<?=base_url()?>profiles/add">Register</a>
-<<<<<<< HEAD
-=======
 
->>>>>>> 7f9695b27047fa33fb4152b55a029d13c0185875
         
     </div><!-- end row form -->
 </div><!-- end .container -->
