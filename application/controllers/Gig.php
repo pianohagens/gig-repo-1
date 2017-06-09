@@ -75,7 +75,7 @@ class Gig extends CI_Controller
     {
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->form_validation->set_message('check_dropdown', 'You need to select an employment type.');
+        $this->form_validation->set_message('checkDropdown', 'You need to select an employment type.');
         $data['title'] = 'Add a new gig';
         
         if ($this->form_validation->run() == FALSE)
@@ -104,7 +104,7 @@ class Gig extends CI_Controller
         
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->form_validation->set_message('check_dropdown', 'You need to select an employment type.');
+        $this->form_validation->set_message('checkDropdown', 'You need to select an employment type.');
         $data['title'] = 'Edit Gigs';
         
         $userId = $this->gig_model->get_session_id();
@@ -179,7 +179,7 @@ class Gig extends CI_Controller
         }      
     }#end of function edit
 
-    public function check_dropdown($post_dropdown){
+    public function checkDropdown($post_dropdown){
         return $post_dropdown == '0' ? FALSE : TRUE;
     }
 
