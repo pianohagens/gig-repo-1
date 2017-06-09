@@ -42,6 +42,7 @@
 		    <option value="">Other</option>
                 </select>
             </div>
+	    <div class="company-detail" style="display:none"><!--div that will hide/show depending on whether user is adding a new company-->
             <div class="form-group">
                 <label for="CompanyAddress" class="col-lg-3 control-label"><em>Company Address</em></label>
                     <div class="col-md-6">
@@ -83,6 +84,7 @@
                         <input type="text" class="form-control" id="CompanyWebsite" name="CompanyWebsite" placeholder="Company Website" value="<?php echo set_value('CompanyWebsite'); ?>">
                     </div>
             </div>
+	    </div><!-- end .company-detail -->
             <br>
             <br>
                 <fieldset>
@@ -199,4 +201,13 @@
         </form>
     </div>
 </div>
+<script>
+	//Script for hiding/showing company details depending on whether the user has selected "other" in the dropdown. 
+	var dropdown = document.getElementsByName("company_id")[0];
+	dropdown.addEventListener("change", function(){
+		let companyDetails = document.getElementsByClassName("company-detail")[0];
+		let displayStyle = dropdown.value === ""? "display: inherit" : "display: none";
+		companyDetails.setAttribute("style", displayStyle);
+	});
+</script>
 <?php $this->load->view($this->config->item('theme') . 'footerjqueryui'); ?>
