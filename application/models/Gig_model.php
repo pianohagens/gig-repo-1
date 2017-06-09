@@ -79,59 +79,52 @@ class Gig_model extends CI_Model {
      */
     public function add_gig()
     {
-        $this->load->helper('url');
-        $this->load->database();
-
-        $data = array(
-            'Name' => $this->input->post('Name'),
-            'Address' => $this->input->post('CompanyAddress'),
-            'CompanyCity' => $this->input->post('CompanyCity'),
-            'State' => $this->input->post('CompanyState'),
-            'ZipCode' => $this->input->post('ZipCode'),
-            'CompanyPhone' => $this->input->post('CompanyPhone'),
-            'Website' => $this->input->post('CompanyWebsite'),
-            
-        );
+$this->load->helper('url');
+	
+    $companyID = (int)$this->input->post('company_id');
+    if ($companyID == 0)
+    {
+	    $company_data = array(
+                'Name' => $this->input->post('Name'),
+                'Address' => $this->input->post('CompanyAddress'),
+                'CompanyCity' => $this->input->post('CompanyCity'),
+                'State' => $this->input->post('CompanyState'),
+                'ZipCode' => $this->input->post('ZipCode'),
+                'CompanyPhone' => $this->input->post('CompanyPhone'),
+                'Website' => $this->input->post('CompanyWebsite'),
+            );
         
-        $this->db->insert('Company', $data);
-        $companyid = $this->db->insert_id();
-
-        //$this->db->order_by("CompanyID", "desc");
-        //$this->db->limit(0, 1);
-        //$query = $this->db->get('Company');
-        //$row = $query->row();
-        //if(isset($row)) {
-             //$companyid = $row->CompanyID;//Joins CompanyID for gig and company tables
-        //}
+            $this->db->insert('Company', $company_data);
+            $companyID = $this->db->insert_id();
+     }
         
-        $data3= array(
-           'FirstName' => $this->input->post('FirstName'),
-            'LastName' => $this->input->post('LastName'),
-            'Email' => $this->input->post('Email'),
-            'Phone' => $this->input->post('Phone'),
-            'CompanyID' => $companyid
- 
-        );
+     $contact_data = array(
+         'FirstName' => $this->input->post('FirstName'),
+         'LastName' => $this->input->post('LastName'),
+         'Email' => $this->input->post('Email'),
+          'Phone' => $this->input->post('Phone'),
+          'CompanyID' => $companyID
+      );
 
-        $this->db->insert('CompanyContact', $data3);
+        $this->db->insert('CompanyContact', $contact_data);
         
+
         $userId = $this->get_session_id();
                 
-        $data2 = array(
-            'CompanyID' => $companyid,    
+        $gig_data = array(
+            'CompanyID' => $companyID,    
             'GigQualify' => strip_tags($this->input->post('GigQualify'),'<p>'),
             'EmploymentType' => $this->input->post('EmploymentType'),
-            //'GigCloseDate' => $this->input->post('GigCloseDate'),
+            'GigCloseDate' => $this->input->post('GigCloseDate'),
             'GigOutline' => strip_tags($this->input->post('GigOutline'),'<p>'),
             'SpInstructions' => strip_tags($this->input->post('SpInstructions'),'<p>'),
             'PayRate' => $this->input->post('PayRate'),
             'GigPosted' => date("Y-m-d H:i:s"),
-            'LastUpdated' => date("Y-m-d H:i:s"),
-            'id' => $userId
+            'LastUpdated' => date("Y-m-d H:i:s")
         );
         
-        return $this->db->insert('Gigs', $data2);
-
+        return $this->db->insert('Gigs', $gig_data);
+        
     }#end of add_gig()
 
 //     public function add_gig_dropdown()
