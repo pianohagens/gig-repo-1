@@ -31,19 +31,16 @@
 
             </div>
             <div class="form-group">
-            <select class="form-control" id="select">
-                <?php
-                    foreach ($dropdown as $row) 
-                        {   
-   		                    echo "<option>" . $row['Name'] . "</option>";   
-	                    }
-                ?>
-            </select>
-                <label for="Name" class="col-lg-3 control-label"><em>Company Name</em></label>
-                    <div class="col-md-6">
-                        <?php echo form_error('Name'); ?>
-                        <input type="text" class="form-control" id="Name" name="Name" placeholder="Company Name" value="<?php echo set_value('Name'); ?>">
-                    </div>
+                <label>Select a company</label>
+                <select name="company_id">
+                    <?php foreach ($companies as $company)
+                    {
+                        echo '<option value='.$company['CompanyID'].'>'.$company['Name'].'</option>';
+
+                    }
+                    ?>
+		    <option value="">Other</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="CompanyAddress" class="col-lg-3 control-label"><em>Company Address</em></label>
