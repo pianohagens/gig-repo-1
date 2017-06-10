@@ -120,7 +120,8 @@ class Profile_model extends CI_Model
 		$this->db->insert('Profile', $form_data);
 		if ($this->db->affected_rows() == '1')
 		{
-			return TRUE;
+			$query = $this->db->get_where('Profile', array('email' => $form_data['email']));
+			return $query->result_array();
 		}
 
 		return FALSE;

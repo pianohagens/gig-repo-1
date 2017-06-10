@@ -159,7 +159,7 @@ class Profile extends CI_Controller {
 				 $this->form_validation->set_rules('i_am_a', 'I am a', 'required');
                 $this->form_validation->set_rules('first_name', 'First Name', 'required');
                 $this->form_validation->set_rules('last_name', 'Last Name', 'required');
-                $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+                $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[Profile.email]');
                 $this->form_validation->set_rules('password', 'Password', 'required');
 				$this->form_validation->set_rules('re_password', 'Password', 'required|matches[password]');
                 $this->form_validation->set_rules('bio', 'bio', 'required');  
@@ -190,11 +190,13 @@ class Profile extends CI_Controller {
             //hash password here
             $form_data['password'] = password_hash($form_data['password'], PASSWORD_BCRYPT);
             // run insert model to write data to db
-            if ($this->profile_model->SaveForm($form_data) == TRUE) // the information has therefore been successfully saved in the db
+            $data['profile'] = $this->profile_model->SaveForm($form_data); // the information has therefore been successfully saved in the db
+				if($data['profile'])
             {
-                $data['title'] = 'Success!';
-                $this->load->view('profiles/success', $data);   // or whatever logic needs to occur
-				//THIS PAGE NEEDS WORK (profiles/success)
+                
+				$slug = $data['profile'][0]['id'];
+				redirect(base_url().'profiles/' . $slug, 'refresh');
+                //$this->load->view('profile/' . $slug /*$data['profile'][0]['id']*/, $data);   // or whatever logic needs to occur
             }
             else
             {
@@ -242,7 +244,7 @@ class Profile extends CI_Controller {
                   
             if ($this->form_validation->run() == FALSE) // validation hasn't been passed
             { 
-                $this->load->view('profiles/edit', $data);
+                $this->load->view('profile/edit', $data);
             }else{
             
         
