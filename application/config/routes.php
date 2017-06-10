@@ -84,14 +84,17 @@ $route['customer'] = 'customer';
 $route['customers'] = 'customer';
 $route['startups'] = 'startups';
 //profiles route
+
 $route['profile/add'] = 'profile/add';
 $route['profiles/add'] = 'profile/add';
 $route['profile/edit'] = 'profile/edit';
 $route['profiles/edit'] = 'profile/edit';
-$route['profiles'] = 'profile';
-$route['profile'] = 'profile';
+$route['profiles'] = 'profile/index';
+$route['profile'] = 'profile/index';
 $route['profile/success'] = 'profile/success';
 $route['profile/duplicat'] = 'profile/duplicat';
+$route['profiles/(:any)'] = 'profile/view/$1';
+$route['profile/(:any)'] = 'profile/view/$1';
 
 $route['contact/view'] = 'contact/view';
 $route['contact/create'] = 'contact/create';

@@ -64,7 +64,7 @@ class Profile extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->helper('email');
 		$this->load->helper('url');
-        $this->config->set_item('nav-active', 'Profiles');//sets active class on all Profile children
+        $this->config->set_item('nav-active', 'Profile');//sets active class on all Profile children
 
 
   }//end constructor
@@ -82,7 +82,7 @@ class Profile extends CI_Controller {
 		die;*/
 			$data['profiles'] = $this->profile_model->getProfiles();
 			$data['title'] = 'Profiles';
-			$this->load->view('profiles/index', $data);
+			$this->load->view('profile/index', $data);
 	}#end index()	
 	
 	
@@ -105,7 +105,7 @@ class Profile extends CI_Controller {
 			}
 
 			//$data['first_name'] = $data['profile']['first_name'];
-			$this->load->view('profiles/view', $data);
+			$this->load->view('profile/view', $data);
 
 	}#end view()
     
@@ -166,7 +166,7 @@ class Profile extends CI_Controller {
 				
             if ($this->form_validation->run() == FALSE) // validation hasn't been passed
             { 
-                $this->load->view('profiles/add', $data);
+                $this->load->view('profile/add', $data);
             }
             else // passed validation proceed to post success logic
             {          	
@@ -195,7 +195,7 @@ class Profile extends CI_Controller {
             {
                 
 				$slug = $data['profile'][0]['id'];
-				redirect(base_url().'profiles/' . $slug, 'refresh');
+				redirect(base_url().'profile/' . $slug, 'refresh');
                 //$this->load->view('profile/' . $slug /*$data['profile'][0]['id']*/, $data);   // or whatever logic needs to occur
             }
             else
@@ -205,7 +205,7 @@ class Profile extends CI_Controller {
             }
            }
        }else{//if the form not submit
-            $this->load->view('profiles/add',$data);   
+            $this->load->view('profile/add',$data);   
        }
     }
     
@@ -320,7 +320,7 @@ class Profile extends CI_Controller {
             //update database
             if ($this->profile_model->updateProfile($form_data) == TRUE) // the information has therefore been successfully saved in the db
             {
-                $this->load->view('profiles/success');   // or whatever logic needs to occur
+                $this->load->view('profile/success');   // or whatever logic needs to occur
             }
             else
             {
@@ -330,7 +330,7 @@ class Profile extends CI_Controller {
             }
            }
         }else{//show form
-               $this->load->view('profiles/edit',$data);
+               $this->load->view('profile/edit',$data);
         }
         
         
