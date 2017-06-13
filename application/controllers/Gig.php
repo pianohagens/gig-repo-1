@@ -108,33 +108,21 @@ class Gig extends CI_Controller
         $data['title'] = 'Edit Gigs';
         
         $userId = $this->gig_model->get_session_id();
-        $id = $this->gig_model->get_session_id();
-        $companyId = $this->gig_model->find_id_in_table('CompanyID', 'Gigs', 'id', $id); 
-        $companyContactId = $this->gig_model->find_id_in_table('CompanyContactID', 'CompanyContact', 'CompanyID', $companyId);
         
-        if ($this->session->logged_in == TRUE)
+         if ($this->session->logged_in == TRUE)
         {//if logged get data of the gig(s) that matches userId from db
             if ($this->gig_model->find_post_id($userId) == TRUE)
             {
                 if(!isset($_POST['submit']))
                 {//create form to edit gigs
-                    //Get CompanyContact
-                    $data['single_company_contact'] = $this->gig_model->get_table('CompanyContact', 'CompanyContactID', $companyContactId);
-                    
-                    //Get Company                 
-                    $data['single_company'] = $this->gig_model->get_table('Company', 'CompanyID', $companyId);
-                    
                     //Get gigs
-                    $data['single_gig'] = $this->gig_model->get_table('Gigs', 'id', $id);
-                    $this->load->view('gigs/edit', $data);
+                    $data['gigs'] = $this->gig_model->get_gig_outline($userId);
+                    $this->load->view('gigs/edit', $data);                  
                 }
-                if(isset($_POST['submit']))
-                {   
-                    //if ($this->form_validation->run() == FALSE) // validation hasn't been passed
-                    //{ 
-                        //$data['data'] = "Validation failed!";
-                        //$this->load->view('gigs/edit', $data);
-                    //}else{
+                $id = $this->gig_model->get_session_id();
+                $companyId = $this->gig_model->find_id_in_table('CompanyID', 'Gigs', 'id', $id); 
+                $companyContactId = $this->gig_model->find_id_in_table('CompanyContactID', 'CompanyContact', 'CompanyID', $companyId);
+
                 $data = array(
                     'Name' => $this->input->post('Name'),
                     'Address' => $this->input->post('Address'),
@@ -167,9 +155,7 @@ class Gig extends CI_Controller
                         $data['success'] = 'updated';
                         $this->load->view('gigs/success', $data);
                     }
-                }
-            }
-            else
+                }else
             {//The user hasn't posted a gig yet. Redirect to add gig page
                 $data['title'] = 'Add Gigs';
                 $this->load->view('gigs/add', $data);  

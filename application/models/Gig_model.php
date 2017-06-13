@@ -220,5 +220,17 @@ class Gig_model extends CI_Model {
                  }
         return $result;
     }#end of find_id_in_table
+
+    public function get_gig_outline($userId)
+    {
+             $this->db->select('*');
+             $this->db->from('Gigs');
+             $this->db->where('id', $userId);
+             $this->db->join('Company', 'Company.CompanyID = Gigs.CompanyID');
+             $this->db->join('CompanyContact', 'Company.CompanyID = CompanyContact.CompanyID');                 
+             $query = $this->db->get();
+             return $query->result_array();      
+    }#end get_gig_outline()
+
     
 }#end of the Gig_model
