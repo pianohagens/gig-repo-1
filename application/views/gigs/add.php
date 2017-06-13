@@ -31,19 +31,23 @@
 
             </div>
             <div class="form-group">
+	      <div class="col-md-6">
                 <label>Select a company</label>
-                <select name="company_id">
+                <select name="company_id" class="form-control">
                     <?php foreach ($companies as $company)
                     {
                         echo '<option value='.$company['CompanyID'].'>'.$company['Name'].'</option>';
 
                     }
                     ?>
-		    <option value="">Other</option>
+		    <option value="">Add New Company</option>
                 </select>
+	    </div>
             </div>
-	    <div class="company-detail" style="display:none"><!--div that will hide/show depending on whether user is adding a new company-->
-            <div class="form-group">
+       <div class="company-detail" style="display:none"><!--div that will hide/show depending on whether user is adding a new company-->
+	    <legend><h3><strong>New Company Details:</strong></h3></legend>
+
+	    <div class="form-group">
                 <label for="CompanyAddress" class="col-lg-3 control-label"><em>Company Address</em></label>
                     <div class="col-md-6">
                         <?php echo form_error('CompanyAddress'); ?>
