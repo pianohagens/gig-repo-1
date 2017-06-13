@@ -48,7 +48,7 @@
         <a href="<?=base_url()?>admin/reset">Forgot Password?</a><br>
         
         <h2>Not A Member?</h2><br>
-        <a href="<?=base_url()?>profiles/add">Register</a>
+        <a href="<?=base_url()?>profile/add">Register</a>
 
         
     </div><!-- end row form -->

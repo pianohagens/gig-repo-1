@@ -299,7 +299,7 @@ class Profile extends CI_Controller {
                 }
                      if ($this->form_validation->run() == FALSE) // validation hasn't been passed
                         { 
-                            $this->load->view('profiles/edit', $data);
+                            $this->load->view('profile/edit', $data);
                         }
                   die;        
             }else{
