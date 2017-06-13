@@ -66,7 +66,7 @@ class Admin_model extends CI_Model {
                         $this->session->set_userdata($newdata); 
                         redirect('admin/');
                     }else{
-                        $error = 'The password and email is not match';
+                        $error = 'The password and email do not match';
                         return $error;
                     
                     }
@@ -86,14 +86,14 @@ class Admin_model extends CI_Model {
                 {
                     
                     //echo $tmp_pass = substr( md5( time( ) ) ,1 );//chr( mt_rand( 97 ,122 ) ) 
-                    echo randomPassword();
+                    /*echo randomPassword();
                     echo '</br>';
                     
-                    die;
-                    /*
-                    $message = "This is your password :". pass_decrypt($row->password,KEY_ENCRYPT);
+                    die;*/
+                    $temp_pass = md5(uniqid());
+                    $message = "This is your temporary password :". $temp_pass;
                     //send mail
-                    $this->email->from('admin@rattananeak.com', 'Admin');
+                    $this->email->from('admin@gigcentral.com', 'Admin');
                     $this->email->to($email);
                     $this->email->subject("Password Reset");
                     $this->email->message($message);
@@ -103,7 +103,7 @@ class Admin_model extends CI_Model {
                     }else{
                     $error = "<h1>Failed To Send Email</h1><p />Debug Details follow:<br />" . $this->email->print_debugger() ;    
                     }
-                    */
+                    
                 }else{
                     $error = "The email doesn't exist on our database";
                         
