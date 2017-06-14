@@ -191,12 +191,11 @@ class Profile extends CI_Controller {
             $form_data['password'] = password_hash($form_data['password'], PASSWORD_BCRYPT);
             // run insert model to write data to db
             $data['profile'] = $this->profile_model->SaveForm($form_data); // the information has therefore been successfully saved in the db
-				if($data['profile'])
+				if(!empty($data['profile']))
             {
                 
 				$slug = $data['profile'][0]['id'];
-				redirect(base_url().'profile/' . $slug, 'refresh');
-                //$this->load->view('profile/' . $slug /*$data['profile'][0]['id']*/, $data);   // or whatever logic needs to occur
+				redirect(base_url() . 'profile/' . $slug, 'refresh');
             }
             else
             {
