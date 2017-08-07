@@ -20,6 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['base_url'] = 'your domain here';
 
+
 /*
 |--------------------------------------------------------------------------
 | Index File
