@@ -18,7 +18,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'your domain here';
+$config['base_url'] = '';
+
+
+
 
 
 /*
@@ -263,6 +266,10 @@ $config['log_file_permissions'] = 0644;
 |
 */
 $config['log_date_format'] = 'Y-m-d H:i:s';
+date_default_timezone_set('America/Los_Angeles');
+
+
+//Year: %Y Month: %m Day: %d - %h:%i %a
 
 /*
 |--------------------------------------------------------------------------
@@ -446,7 +453,8 @@ $config['csrf_exclude_uris'] = array();
 | Even if it does, however, not all browsers support compression
 | so enable only if you are reasonably sure your visitors can handle it.
 |
-| Only used if zlib.output_compression is turned off in your php.ini.
+| Only used if zlib.output_compression is turned off in your
+i.
 | Please do not use it together with httpd-level output compression.
 |
 | VERY IMPORTANT:  If you are getting a blank page when compression is enabled it
