@@ -146,11 +146,34 @@ INSERT INTO `test_Customers` (`CustomerID`, `LastName`, `FirstName`, `Email`) VA
 (4,	'Rules',	'Ann',	'ann@example.com')
 ON DUPLICATE KEY UPDATE `CustomerID` = VALUES(`CustomerID`), `LastName` = VALUES(`LastName`), `FirstName` = VALUES(`FirstName`), `Email` = VALUES(`Email`);
 
+
+DROP TABLE IF EXISTS `VenueType`;
+CREATE TABLE `VenueType` (
+  `VenueTypeKey` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `VenuetypeName` varchar(50) DEFAULT '',
+  `VenueKey` int(10) unsigned NOT NULL,
+
+  PRIMARY KEY (`VenueTypeKey`),
+  KEY `VenueKey` (`VenueKey`),
+  KEY `VenueTypeKey_index` (`VenueTypeKey`),
+  CONSTRAINT `VenueType_ibfk_1` FOREIGN KEY (`VenueKey`) REFERENCES `Venue` (`VenueKey`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `VenueType` (`VenueTypeKey`, `VenuetypeName`) VALUES
+(1,	'Coffee shop'),
+(2,	'Library'),
+(3,	'School'),
+(4,	'Community Center'),
+(5,	'Other')
+ON DUPLICATE KEY UPDATE `VenueTypeKey` = VALUES(`VenueTypeKey`), `VenuetypeName` = VALUES(`VenuetypeName`);
+
+
+
 DROP TABLE IF EXISTS `Venue`;
 CREATE TABLE `Venue` (
   `VenueKey` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `VenueName` varchar(50) DEFAULT '',
-  `VenueTypeKey` int(10) unsigned DEFAULT '0',
+  `VenueTypeKey` int(10) NOT NULL DEFAULT '5',
   `VenueAddress` varchar(255) DEFAULT '',
   `City` varchar(255) DEFAULT '',
   `State` varchar(50) DEFAULT '',
@@ -168,9 +191,7 @@ CREATE TABLE `Venue` (
   `VenuePostDate` datetime NOT NULL,
   `VenueExpirationDate` datetime NOT NULL,
   PRIMARY KEY (`VenueKey`),
-  KEY `VenueTypeKey` (`VenueTypeKey`),
-  KEY `VenueKey_index` (`VenueKey`),
-  CONSTRAINT `Venue_ibfk_1` FOREIGN KEY (`VenueTypeKey`) REFERENCES `VenueType` (`VenueTypeKey`) ON DELETE CASCADE
+  KEY `VenueKey_index` (`VenueKey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `Venue` (`VenueKey`, `VenueName`, `VenueTypeKey`, `VenueAddress`, `City`, `State`, `ZipCode`, `VenuePhone`, `VenueWebsite`, `VenueHours`, `Food`, `Bar`, `Outlets`, `WiFi`, `Outdoor`, `Wheelchair`, `Parking`, `VenuePostDate`, `VenueExpirationDate`) VALUES
@@ -202,20 +223,5 @@ INSERT INTO `VenueAmenity` (`VenueAmenityKey`, `AmenityKey`, `VenueKey`) VALUES
 (7,	4,	3)
 ON DUPLICATE KEY UPDATE `VenueAmenityKey` = VALUES(`VenueAmenityKey`), `AmenityKey` = VALUES(`AmenityKey`), `VenueKey` = VALUES(`VenueKey`);
 
-DROP TABLE IF EXISTS `VenueType`;
-CREATE TABLE `VenueType` (
-  `VenueTypeKey` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `VenuetypeName` varchar(50) DEFAULT '',
-  PRIMARY KEY (`VenueTypeKey`),
-  KEY `VenueTypeKey_index` (`VenueTypeKey`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO `VenueType` (`VenueTypeKey`, `VenuetypeName`) VALUES
-(1,	'Coffee shop'),
-(2,	'Library'),
-(3,	'School'),
-(4,	'Community Center'),
-(5,	'Other')
-ON DUPLICATE KEY UPDATE `VenueTypeKey` = VALUES(`VenueTypeKey`), `VenuetypeName` = VALUES(`VenuetypeName`);
 
 -- 2017-06-07 01:05:31
