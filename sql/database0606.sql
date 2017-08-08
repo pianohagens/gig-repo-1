@@ -150,7 +150,7 @@ ON DUPLICATE KEY UPDATE `CustomerID` = VALUES(`CustomerID`), `LastName` = VALUES
 DROP TABLE IF EXISTS `VenueType`;
 CREATE TABLE `VenueType` (
   `VenueTypeKey` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `VenuetypeName` varchar(50) DEFAULT '',
+  `VenueTypeName` varchar(50) DEFAULT '',
   `VenueKey` int(10) unsigned NOT NULL,
 
   PRIMARY KEY (`VenueTypeKey`),
@@ -159,13 +159,13 @@ CREATE TABLE `VenueType` (
   CONSTRAINT `VenueType_ibfk_1` FOREIGN KEY (`VenueKey`) REFERENCES `Venue` (`VenueKey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `VenueType` (`VenueTypeKey`, `VenuetypeName`) VALUES
+INSERT INTO `VenueType` (`VenueTypeKey`, `VenueTypeName`) VALUES
 (1,	'Coffee shop'),
 (2,	'Library'),
 (3,	'School'),
 (4,	'Community Center'),
 (5,	'Other')
-ON DUPLICATE KEY UPDATE `VenueTypeKey` = VALUES(`VenueTypeKey`), `VenuetypeName` = VALUES(`VenuetypeName`);
+ON DUPLICATE KEY UPDATE `VenueTypeKey` = VALUES(`VenueTypeKey`), `VenueTypeName` = VALUES(`VenueTypeName`);
 
 
 

@@ -46,11 +46,11 @@ class Venues_model extends CI_Model {
      * @return void
      * @todo none
      */
-    public function getVenues($slug = FALSE)
+    public function get_Venues($slug = FALSE)
     {
 
-        
-        
+
+
         if ($slug === FALSE)
         {
             $this->db->select('*');
@@ -66,7 +66,7 @@ class Venues_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('Venue');
         $this->db->join('VenueType', 'VenueType.VenueTypeKey = Venue.VenueTypeKey')->where(array('VenueKey' => $slug));
-        
+
         $query = $this->db->get();
         return $query->row_array();
 
@@ -81,15 +81,17 @@ class Venues_model extends CI_Model {
      * @return void
      * @todo none
      */
-    public function addVenues()
+    public function add_Venues()
     {
          $this->load->helper('url');
 
-         $now = date('Y-m-d H:i:s');
-        
+      //   $now = date('Y-m-d H:i:s');
+//  $now = date('%Y Month: %m Day: %d - %h:%i %a');
+
+
          $data = array(
             'VenueName' => $this->input->post('VenueName'),
-            'VenueTypeKey' => $this->input->post('VenueTypeKey'),
+          'VenueTypeKey' => $this->input->post('VenueTypeKey'),
             'VenueAddress' => $this->input->post('VenueAddress'),
             'City' => $this->input->post('City'),
             'State' => $this->input->post('State'),
@@ -97,6 +99,7 @@ class Venues_model extends CI_Model {
             'VenuePhone' => $this->input->post('VenuePhone'),
             'VenueWebsite' => $this->input->post('VenueWebsite'),
             'VenueHours' => $this->input->post('VenueHours'),
+        //      'VenueType' => $this->input->post('VenueType'),
             'Food' => $this->input->post('Food'),
             'Bar' => $this->input->post('Bar'),
             'Outlets' => $this->input->post('Outlets'),
@@ -104,15 +107,16 @@ class Venues_model extends CI_Model {
             'Outdoor' => $this->input->post('Outdoor'),
             'Wheelchair' => $this->input->post('Wheelchair'),
             'Parking' => $this->input->post('Parking'),
-            'VenuePostDate' =>$now, 
-            'VenueExpirationDate' => $this->input->post('VenueExpirationDate') 
-            
+          //  'VenuePostDate' =>$now,
+           'VenuePostDate' => date("Y-m-d H:i:s"),
+            'VenueExpirationDate' => $this->input->post('VenueExpirationDate')
+
          );
         //$this->db-post('VenuePostDate', 'NOW()', FALSE);
-        
-        
-       
-        
+
+
+
+
         return $this->db->insert('Venue', $data);
 
 }//end addVenues method

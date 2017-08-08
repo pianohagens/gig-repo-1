@@ -8,7 +8,7 @@
  * @package ITC260
  * @subpackage Forms
 
- * @author Lydia King, Anna Atiagina, Jenny Crimp 
+ * @author Lydia King, Anna Atiagina, Jenny Crimp
  * @author Alex, Spencer, Mith, Jeremiah
  * @version 3.0 2016/06/14
  * @link
@@ -42,7 +42,7 @@ class Venues extends CI_Controller {
             $this->load->helper('form');
             $this->config->set_item('nav-active', 'Venues');//sets active class on all Venues children
        }
-    
+
        /**
         * index function loads venues data from Venues/Model and allows you to view in venues/index
         *
@@ -52,7 +52,7 @@ class Venues extends CI_Controller {
         */
        public function index()
        {
-             $data['venues'] = $this->Venues_model->getVenues();
+             $data['venues'] = $this->Venues_model->get_Venues();
              $data['title'] = 'Venues';
              $this->load->view('venues/index', $data);
        }//end index()
@@ -66,7 +66,7 @@ class Venues extends CI_Controller {
      */
        public function view($slug = NULL)
 	   {
-			$data['venue'] = $this->Venues_model->getVenues($slug);
+			$data['venue'] = $this->Venues_model->get_Venues($slug);
 
 			if (empty($data['venue']))
 			{
@@ -99,8 +99,10 @@ class Venues extends CI_Controller {
         }
         else
         {
-            $this->Venues_model->addVenues();
-            $this->load->view('venues/success');
+           $data['venues'] = $this->Venues_model->get_Venues();
+           $data['title']= 'Venues';
+            $this->Venues_model->add_Venues();
+            $this->load->view('venues/success', $data);
         }
     }//end add()
 
