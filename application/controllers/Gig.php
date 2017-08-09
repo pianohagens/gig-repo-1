@@ -179,9 +179,18 @@ class Gig extends CI_Controller
         }      
     }#end of function edit
 
-    public function check_dropdown($post_dropdown){
-        return $post_dropdown == '0' ? FALSE : TRUE;
-    }
+    public function check_dropdown($str)
+        {
+                if ($str == 0)
+                {
+                        $this->form_validation->set_message('check_dropdown', 'The {field} is required');
+                        return FALSE;
+                }
+                else
+                {
+                        return TRUE;
+                }
+        }
 
 
 }#end Gigs class/controller
