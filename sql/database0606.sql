@@ -173,7 +173,7 @@ DROP TABLE IF EXISTS `Venue`;
 CREATE TABLE `Venue` (
   `VenueKey` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `VenueName` varchar(50) DEFAULT '',
-  `VenueTypeKey` int(10) NOT NULL DEFAULT '5',
+  `VenueTypeKey` int(10) unsigned DEFAULT '0',
   `VenueAddress` varchar(255) DEFAULT '',
   `City` varchar(255) DEFAULT '',
   `State` varchar(50) DEFAULT '',

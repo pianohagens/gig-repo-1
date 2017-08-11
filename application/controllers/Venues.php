@@ -87,23 +87,47 @@ class Venues extends CI_Controller {
      */
     public function add()
     {
+
         $this->load->helper('form');
         $this->load->library('form_validation');
 
+        $this->form_validation->set_rules('VenueName','Venue Name','required');
+        $this->form_validation->set_rules('VenueAddress','Venue Address','required');
+        $this->form_validation->set_rules('City','Venue City','required');
+        $this->form_validation->set_rules('State','Venue State','required');
+        $this->form_validation->set_rules('ZipCode','Venue Zip Code','required');
+        $this->form_validation->set_rules('VenuePhone','Venue Phone','required');
+        $this->form_validation->set_rules('VenueTypeKey', 'Venue Type', 'callback_VenueTypeKey_check');
+
         $data['title'] = 'Add a new Venue';
+
 
         if ($this->form_validation->run() == FALSE)
         {
             $this->load->view('venues/add', $data);
-
         }
         else
         {
-           $data['venues'] = $this->Venues_model->get_Venues();
-           $data['title']= 'Venues';
+          //  $data['venues'] = $this->Venues_model->get_Venues();
+          //  $data['title']= 'Venues';
+
             $this->Venues_model->add_Venues();
             $this->load->view('venues/success', $data);
         }
     }//end add()
+
+    public function VenueTypeKey_check($VenueTypeKey)
+    {
+      if ($VenueTypeKey > '5')
+      {
+        $this->form_validation->set_message('VenueTypeKey_check','The Venue Type field is required.');
+        return FALSE;
+      }
+      else {
+        return TRUE;
+      }
+    }
+
+
 
 }//END Venues

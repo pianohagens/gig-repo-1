@@ -3,6 +3,10 @@
 * add.php view page for generic Venue controller
 *
 * views/venues/add.php
+
+*For Form validation
+*  applicatian/config/form_validation.php
+
 *
 * @package ITC 260 Gig Central CodeIgnitor
 * @subpackage Venues
@@ -21,7 +25,7 @@ $attributes = array('class'=>'form-horizontal', 'role'=>'form');
 <div class="container">
   <div class="col-lg-10">
       <!--error messages for form validation -->
-      
+
       <?php echo form_open('venues/add', $attributes); ?>
         <!--<form class="form-horizontal" role="form" method="post">-->
 
@@ -81,14 +85,17 @@ $attributes = array('class'=>'form-horizontal', 'role'=>'form');
                     </div>
             </div>
            <div class="form-group">
+
             <label for="VenueHours" class="col-lg-3 control-label"><em>Hours</em></label><br>
                 <div class="col-md-6">
                   <input type="text" class="form-control" id="VenueHours" name="VenueHours" placeholder="Venue Hours" value="<?php echo set_value('VenueHours'); ?>">
                 </div>
            </div>
           <div class="form-group">
-              <label for="VenueTypeKey" class="col-lg-3 control-label"><em>Venue Type</em></label>
+              <label for="VenueTypeKey" class="col-lg-3 control-label" required><em>Venue Type</em></label>
                   <div class="col-md-6">
+                    <?php echo form_error('VenueTypeKey'); ?>
+
                       <select class="form-control" id="VenueTypeKey" name="VenueTypeKey">
                           <option value="select">Select One</option>
                           <option value="1" <?php echo  set_select('VenueTypeKey', '1'); ?>>Cafe/Coffee Shop</option>
@@ -110,10 +117,10 @@ $attributes = array('class'=>'form-horizontal', 'role'=>'form');
                 <div class="col-md-6">
                   <input type="text" class="form-control" id="VenueExpirationDate" name="VenueExpirationDate" placeholder="Venue Expiration Date" value="<?php echo set_value('VenueExpirationDate'); ?>">
                 </div>
-           </div>        
+           </div>
         </fieldset>
-            
-        <fieldset>   
+
+        <fieldset>
         <legend><h3><strong>Venue Amenities</strong></h3></legend>
            <div class="form-group">
               <label for="Food" class="col-lg-3 control-label"><em>Venue Amenities</em></label>
@@ -199,7 +206,7 @@ $attributes = array('class'=>'form-horizontal', 'role'=>'form');
                       <button type="submit" class="btn btn-default">Submit</button>
                       </div>
                </div>
-            </div>          
+            </div>
       </fieldset>
     </div>
 </div>
