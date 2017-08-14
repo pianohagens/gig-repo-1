@@ -4,7 +4,7 @@
 *
 * @package ITC 260 Gig Central CodeIgnitor
 * @subpackage Gig Controller
-* @author Patricia Barker, Mitchell Thompson, Spencer Echon, Turner Tackitt 
+* @author Patricia Barker, Mitchell Thompson, Spencer Echon, Turner Tackitt
 * @version 2.3 2016/06/14
 * @license http://www.apache.org/licenses/LICENSE-2.0
 * @see Gig_model.php
@@ -22,7 +22,7 @@ class Gig extends CI_Controller
  * Gig Class extends the CI_Controller class
  *
  * The constructor creates an instance of the Gig Class that loads Gig_model.php and sets
- * the banner. 
+ * the banner.
  *
  * A profile object can be created in this manner:
  *
@@ -33,16 +33,16 @@ class Gig extends CI_Controller
  * The index() method of the gig object created will get all the data from Gig_model and load them into the view gigs/index
  *
  * The view($slug) method of the gig object created will get  the data of that slug from Gig_model and load them into the view gigs/view
- * 
+ *
  * The add() method of the gig object created will load a form , validate it and add gigs.
- * 
- * 
+ *
+ *
  * @see Gig_model
  * @return void
  * @todo none
  */
-    
-    
+
+
     public function __construct()
     {//begin constructor
         parent::__construct();
@@ -55,7 +55,7 @@ class Gig extends CI_Controller
     {//begin function index
         $data['gigs'] = $this->gig_model->get_gigs();
         $data['title']= 'Gigs';
-        
+
         $this->load->view('gigs/index', $data);
     }#end function index
 
@@ -67,7 +67,7 @@ class Gig extends CI_Controller
                 show_404();
         }
         $data['title']= 'Gig';
-        
+
         $this->load->view('gigs/view', $data);
     }#end function view
 
@@ -75,12 +75,25 @@ class Gig extends CI_Controller
     {
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->form_validation->set_message('check_dropdown', 'You need to select an employment type.');
+        //$this->form_validation->set_message('callback_EmploymentType_check', 'You need to select an employment type.');
+        $this->form_validation->set_rules('Name','Company Name','required');
+        $this->form_validation->set_rules('CompanyAddress','Company Address','required');
+        $this->form_validation->set_rules('CompanyCity','Company City','required');
+        $this->form_validation->set_rules('CompanyState','Company State','required');
+        $this->form_validation->set_rules('ZipCode','Zip Code','required');
+        $this->form_validation->set_rules('FirstName','First Name','required');
+        $this->form_validation->set_rules('LastName','Last Name','required');
+        $this->form_validation->set_rules('Email','Contact email','required|valid_email');
+        $this->form_validation->set_rules('GigCloseDate','Gig Close Date','required');
+        $this->form_validation->set_rules('GigOutline','Gig description','required');
+        $this->form_validation->set_rules('EmploymentType', 'Employment Type', 'callback_EmploymentType_check');
+
+
         $data['title'] = 'Add a new gig';
-        
+
         if ($this->form_validation->run() == FALSE)
         {//create form to add gigs
-            $this->load->view('gigs/add', $data); 
+            $this->load->view('gigs/add', $data);
         }
         else
         {//this processes
@@ -92,6 +105,20 @@ class Gig extends CI_Controller
 
         }
     }#end function add()
+
+    public function EmploymentType_check($EmploymentType)
+    {
+      if ($EmploymentType == '0')
+      {
+        $this->form_validation->set_message('EmploymentType_check','The Employment Type field is required.');
+        return FALSE;
+      }
+      else {
+        return TRUE;
+      }
+    }
+
+
     public function search()
     {
         $keyword = $this->input->post('keyword');
@@ -101,17 +128,17 @@ class Gig extends CI_Controller
         $this->load->view('gigs/search', $data);
     }
     public function edit(){
-        
+
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->form_validation->set_message('check_dropdown', 'You need to select an employment type.');
+        $this->form_validation->set_message('EmploymentType_check', 'You need to select an employment type.');
         $data['title'] = 'Edit Gigs';
-        
+
         $userId = $this->gig_model->get_session_id();
         $id = $this->gig_model->get_session_id();
-        $companyId = $this->gig_model->find_id_in_table('CompanyID', 'Gigs', 'id', $id); 
+        $companyId = $this->gig_model->find_id_in_table('CompanyID', 'Gigs', 'id', $id);
         $companyContactId = $this->gig_model->find_id_in_table('CompanyContactID', 'CompanyContact', 'CompanyID', $companyId);
-        
+
         if ($this->session->logged_in == TRUE)
         {//if logged get data of the gig(s) that matches userId from db
             if ($this->gig_model->find_post_id($userId) == TRUE)
@@ -120,18 +147,18 @@ class Gig extends CI_Controller
                 {//create form to edit gigs
                     //Get CompanyContact
                     $data['single_company_contact'] = $this->gig_model->get_table('CompanyContact', 'CompanyContactID', $companyContactId);
-                    
-                    //Get Company                 
+
+                    //Get Company
                     $data['single_company'] = $this->gig_model->get_table('Company', 'CompanyID', $companyId);
-                    
+
                     //Get gigs
                     $data['single_gig'] = $this->gig_model->get_table('Gigs', 'id', $id);
                     $this->load->view('gigs/edit', $data);
                 }
                 if(isset($_POST['submit']))
-                {   
+                {
                     //if ($this->form_validation->run() == FALSE) // validation hasn't been passed
-                    //{ 
+                    //{
                         //$data['data'] = "Validation failed!";
                         //$this->load->view('gigs/edit', $data);
                     //}else{
@@ -144,21 +171,21 @@ class Gig extends CI_Controller
                     'CompanyPhone' => $this->input->post('CompanyPhone'),
                     'Website' => $this->input->post('Website'),
                     );
-                
+
                 $data3= array(
                     'FirstName' => $this->input->post('FirstName'),
                     'LastName' => $this->input->post('LastName'),
                     'Email' => $this->input->post('Email'),
                     'Phone' => $this->input->post('Phone'),
                     );
-                
+
                 $data2 = array(
-                    
+
                     'GigQualify' => strip_tags($this->input->post('GigQualify'),'<p>'),
-                    'EmploymentType' => $this->input->post('EmploymentType'),              
-                    'GigOutline' => strip_tags($this->input->post('GigOutline'),'<p>'),       
-                    'SpInstructions' => strip_tags($this->input->post('SpInstructions'),'<p>'),        
-                    'PayRate' => $this->input->post('PayRate'),      
+                    'EmploymentType' => $this->input->post('EmploymentType'),
+                    'GigOutline' => strip_tags($this->input->post('GigOutline'),'<p>'),
+                    'SpInstructions' => strip_tags($this->input->post('SpInstructions'),'<p>'),
+                    'PayRate' => $this->input->post('PayRate'),
                     'LastUpdated' => date("Y-m-d H:i:s"),
                     );
                     if ($data['gigs'] = $this->gig_model->edit_gigs($companyId, $data, $companyContactId, $data3, $userId, $data2) == TRUE)
@@ -172,16 +199,26 @@ class Gig extends CI_Controller
             else
             {//The user hasn't posted a gig yet. Redirect to add gig page
                 $data['title'] = 'Add Gigs';
-                $this->load->view('gigs/add', $data);  
-            }          
+                $this->load->view('gigs/add', $data);
+            }
         }else{//redirect to login page
                 redirect("admin/login");
-        }      
+        }
     }#end of function edit
 
-    public function check_dropdown($post_dropdown){
-        return $post_dropdown == '0' ? FALSE : TRUE;
-    }
-
+    // public function check_dropdown($post_dropdown){
+    //     return $post_dropdown == '0' ? FALSE : TRUE;
+    // }
+    // public function check_dropdown($str)
+    // {
+    //   if ($str == '0')
+    //   {
+    //     $this->form_validation->set_message('check_dropdown','The Venue Type field is required.');
+    //     return FALSE;
+    //   }
+    //   else {
+    //     return TRUE;
+    //   }
+    // }
 
 }#end Gigs class/controller

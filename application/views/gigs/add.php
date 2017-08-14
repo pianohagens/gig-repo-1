@@ -26,7 +26,7 @@
 
         <form class="form-horizontal" role="form" method="post" action="add">
         <fieldset>
-            
+
             <div class="form-group">
                 <h1><strong>Add a Gig</strong></h1><br />
                 <legend><h3><strong>Company Information</strong></h3></legend>
@@ -120,10 +120,10 @@
                         <?php echo form_error('EmploymentType'); ?>
                         <select class="form-control" id="EmploymentType" name="EmploymentType">
                             <option value="0">Select One</option>
-                            <option value="contract" <?php echo set_select('EmploymentType', 'contract'); ?>>Contract</option>
-                            <option value="intern" <?php echo set_select('EmploymentType', 'intern'); ?>>Intern</option>
-                            <option value="temporary" <?php echo set_select('EmploymentType', 'temporary'); ?>>Temporary</option>
-                            <option value="permanent" <?php echo set_select('EmploymentType', 'permanent'); ?>>Permanent</option>
+                            <option value="1" <?php echo set_select('EmploymentType', '1'); ?>>Contract</option>
+                            <option value="2" <?php echo set_select('EmploymentType', '2'); ?>>Intern</option>
+                            <option value="3" <?php echo set_select('EmploymentType', '3'); ?>>Temporary</option>
+                            <option value="4" <?php echo set_select('EmploymentType', '4'); ?>>Permanent</option>
                         </select>
                     </div>
             </div>
@@ -146,7 +146,7 @@
                     <div class="col-md-6">
                     <?php echo form_error('GigCloseDate'); ?>
             <?php $attributes = 'id="GigCloseDate" placeholder="Gig close date"';
-            echo form_input('GigCloseDate', set_value('GigCloseDate'), $attributes); ?> 
+            echo form_input('GigCloseDate', set_value('GigCloseDate'), $attributes); ?>
                         </div>
                     </div>
                 </fieldset>

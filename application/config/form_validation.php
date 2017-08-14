@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | -------------------------------------------------------------------
 | FORM VALIDATION SETTINGS
 | -------------------------------------------------------------------
-| 
+|
 */
 
 // Set custom form validation rules here.
@@ -61,12 +61,13 @@ $config = array(
                 'field' => 'GigOutline',
                 'label' => 'Gig description',
                 'rules' => 'required'
-            ),
-            array(
-                'field' => 'EmploymentType',
-                'label' => 'Employment type',
-                'rules' => 'required|callback_checkDropdown'
-            )
+              )
+              //,
+            // array(
+            //     'field' => 'EmploymentType',
+            //     'label' => 'Employment type',
+            //     'rules' => 'required'
+            // )
         ),
         'venues/add' => array(
             array(
@@ -98,7 +99,13 @@ $config = array(
                 'field' => 'State',
                 'label' => 'Venue State',
                 'rules' => 'required'
-            )
+             )
+            //  ,
+            // array(
+            //     'field' => 'VenueType',
+            //     'label' => 'Venue Type',
+            //     'rules' => 'required|greater_than[0]'
+            // )
         ),
         'profile/add' => array(
             array(
@@ -142,8 +149,7 @@ $config = array(
         )
 );
 
-// Sets custom delimeters for error messages on forms. 
+// Sets custom delimeters for error messages on forms.
 // These settings MAY not work if they are above custom validation rules.
 $config['error_prefix'] = '<div class="text-danger">';
 $config['error_suffix'] = '</div>';
-
