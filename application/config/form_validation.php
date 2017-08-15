@@ -102,17 +102,17 @@ $config = array(
         ),
         'profile/add' => array(
             array(
-            'field' => 'i_am_a',
+            'field' => 'I_Am_A',
             'label' => 'I am a',
             'rules' => 'required'
             ),
             array(
-            'field' => 'first_name',
+            'field' => 'FirstName',
             'label' => 'First name',
             'rules' => 'required'
             ),
             array(
-            'field' => 'last_name',
+            'field' => 'LastName',
             'label' => 'Last name',
             'rules' => 'required'
             ),
@@ -135,8 +135,8 @@ $config = array(
             'rules' => 'required|matches[password]'
             ),
             array(
-            'field' => 'bio',
-            'label' => 'bio',
+            'field' => 'Bio',
+            'label' => 'Bio',
             'rules' => 'required'
             )
         )

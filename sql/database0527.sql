@@ -120,14 +120,14 @@ ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `VenueKey` = VALUES(`VenueKey`), `l
 DROP TABLE IF EXISTS `Profile`;
 CREATE TABLE `Profile` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `i_am_a` text,
-  `first_name` text,
-  `last_name` text,
+  `I_Am_A` text,
+  `FirstName` text,
+  `LastName` text,
   `email` text,
   `password` text NOT NULL,
-  `picture` varchar(24) DEFAULT NULL,
-  `bio` text,
-  `subscribed_to_newsletters` tinyint(1) NOT NULL DEFAULT '0',
+  `Picture` varchar(24) DEFAULT NULL,
+  `Bio` text,
+  `NewsletterSubscriber` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

@@ -118,9 +118,9 @@ class Admin extends CI_Controller {
           
            unset(
             $_SESSION['status'],
-            $_SESSION['first_name'],
-            $_SESSION['last_name'],
-            $_SESSION['picture'],
+            $_SESSION['FirstName'],
+            $_SESSION['LastName'],
+            $_SESSION['Picture'],
             $_SESSION['email'],
             $_SESSION['logged_in'],
             $_SESSION['lang']

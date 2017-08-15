@@ -33,12 +33,12 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=first_name</td>
+	<td>id=FirstName</td>
 	<td>Bones</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=last_name</td>
+	<td>id=LastName</td>
 	<td>Hillman</td>
 </tr>
 <tr>
@@ -58,7 +58,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>name=bio</td>
+	<td>name=Bio</td>
 	<td>test</td>
 </tr>
 <tr>

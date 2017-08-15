@@ -6,12 +6,12 @@ $this->load->view($this->config->item('theme') . 'header');
 <p><?php echo anchor('profile/', 'Back to Profiles List')?></p>
 <div class="col-sm-12 col-md-6 col-lg-4">
         <div class="col-sm-4">
-            <img src="<?=base_url()?>img/<?=$profile['picture']?>" alt="Profile Picture" class="img-circle  img-responsive">    
+            <img src="<?=base_url()?>img/<?=$profile['Picture']?>" alt="Profile Picture" class="img-circle  img-responsive">    
         </div>
         <div class="col-sm-8">
-            <h3><?php echo $profile['first_name']." ". $profile['last_name'] ?></h3>
+            <h3><?php echo $profile['FirstName']." ". $profile['LastName'] ?></h3>
 			<p><?php echo $profile['email'] ?></p>
-            <p><?php echo $profile['bio'] ?></p>   
+            <p><?php echo $profile['Bio'] ?></p>   
         </div>
 </div>
 

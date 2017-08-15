@@ -41,7 +41,7 @@ $this->load->view($this->config->item('theme') . 'header'); //Loads Bootswatch t
                     
             </label>
             <div class="col-lg-6">
-                <img src="<?=base_url()?>img/<?=$picture?>" alt="Picture ID" id="pic_id" class="img-responsive">
+                <img src="<?=base_url()?>img/<?=$Picture?>" alt="Picture ID" id="pic_id" class="img-responsive">
             </div>
         </div>
         <div class="form-group">
@@ -55,10 +55,10 @@ $this->load->view($this->config->item('theme') . 'header'); //Loads Bootswatch t
         </div>
         
         <div class="form-group">
-            <label for="i_am_a" class="col-lg-3 control-label">I am <span class="required">*</span></label>
-            <?php echo form_error('i_am_a'); ?>
+            <label for="I_Am_A" class="col-lg-3 control-label">I am <span class="required">*</span></label>
+            <?php echo form_error('I_Am_A'); ?>
           <div class="col-lg-6">
-            <select name="i_am_a" id="i_am_a" class="form-control">
+            <select name="I_Am_A" id="I_Am_A" class="form-control">
               <option value="employee"><?=$i_am?></option> 
               <option value="employee">Employee</option>
               <option value="employer">Employer</option>
@@ -67,21 +67,21 @@ $this->load->view($this->config->item('theme') . 'header'); //Loads Bootswatch t
         </div>
 
         <div class="form-group">
-          <label for="first_name" class="col-lg-3 control-label">First Name <span class="required">*</span></label>
+          <label for="FirstName" class="col-lg-3 control-label">First Name <span class="required">*</span></label>
             
           <div class="col-lg-6">
-            <input id="first_name" class="form-control" type="text" name="first_name"  value="<?=$first_name?>">
+            <input id="FirstName" class="form-control" type="text" name="FirstName"  value="<?=$FirstName?>">
           </div>
-          <?php echo form_error('first_name'); ?>
+          <?php echo form_error('FirstName'); ?>
         </div>
 
         <div class="form-group">
-          <label for="last_name" class="col-lg-3 control-label">Last Name <span class="required">*</span></label>
+          <label for="LastName" class="col-lg-3 control-label">Last Name <span class="required">*</span></label>
             
           <div class="col-lg-6">
-            <input id="last_name" class="form-control" type="text" name="last_name"  value="<?=$last_name?>">
+            <input id="LastName" class="form-control" type="text" name="LastName"  value="<?=$LastName?>">
           </div>
-          <?php echo form_error('last_name'); ?>
+          <?php echo form_error('LastName'); ?>
         </div>
 
         <div class="form-group">
@@ -127,16 +127,16 @@ $this->load->view($this->config->item('theme') . 'header'); //Loads Bootswatch t
         <div class="form-group">
           <label for="languages" class="col-lg-3 control-label">Bio<span class="required">*</span></label>
           <div class="col-lg-3">
-            <?php echo form_textarea( array( 'name' => 'bio', 'rows' => '5', 'cols' => '53', 'value' => $bio ) )?>
+            <?php echo form_textarea( array( 'name' => 'Bio', 'rows' => '5', 'cols' => '53', 'value' => $Bio ) )?>
           </div>
-          <?php echo form_error('bio'); ?>
+          <?php echo form_error('Bio'); ?>
         </div>
 
         
         <div class="form-group">
-          <label for="subscribed_to_newsletters" class="col-lg-3 control-label">Subscribe to Newsletter?</label>           
+          <label for="NewsletterSubscriber" class="col-lg-3 control-label">Subscribe to Newsletter?</label>           
           <div class="col-lg-6">
-            <input id="subscribed_to_newsletters" class="form-control" type="checkbox" name="subscribed_to_newsletters" value="1" checked>
+            <input id="NewsletterSubscriber" class="form-control" type="checkbox" name="NewsletterSubscriber" value="1" checked>
           </div>
         </div>
         

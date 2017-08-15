@@ -110,14 +110,14 @@ INSERT INTO `Gigs` (`GigID`, `CompanyID`, `GigQualify`, `EmploymentType`, `GigOu
 DROP TABLE IF EXISTS `Profile`;
 CREATE TABLE `Profile` (
   `id` int(10) UNSIGNED NOT NULL,
-  `i_am_a` text,
-  `first_name` text,
-  `last_name` text,
+  `I_Am_A` text,
+  `FirstName` text,
+  `LastName` text,
   `email` text,
   `password` text NOT NULL,
-  `picture` varchar(24) DEFAULT NULL,
-  `bio` text,
-  `subscribed_to_newsletters` tinyint(1) NOT NULL DEFAULT '0'
+  `Picture` varchar(24) DEFAULT NULL,
+  `Bio` text,
+  `NewsletterSubscriber` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

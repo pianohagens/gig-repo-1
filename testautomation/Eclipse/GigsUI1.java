@@ -26,7 +26,7 @@ public GigsUI1() {
 
 
  /* // Default constructor, was empty before. 
-  public ProfileUI1(Object userfile, Object first_name, Object last_name, Object email, Object password, Object re_password, Object bio) {
+  public ProfileUI1(Object userfile, Object FirstName, Object LastName, Object email, Object password, Object re_password, Object Bio) {
 	// TODO Auto-generated constructor stub
 	
 */ 	  

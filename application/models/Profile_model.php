@@ -79,10 +79,10 @@ class Profile_model extends CI_Model
     {
         if ($slug === FALSE)
         {
-            $query = $this->db->get_where('Profile',array('subscribed_to_newsletters'=>$subscribed));
+            $query = $this->db->get_where('Profile',array('NewsletterSubscriber'=>$subscribed));
             return $query->result_array();
         }
-        $query = $this->db->get_where('Profile', array('id' => $slug,'subscribed_to_newsletters' => $subscribed));
+        $query = $this->db->get_where('Profile', array('id' => $slug,'NewsletterSubscriber' => $subscribed));
         return $query->result_array();
     }    
     /**
@@ -97,10 +97,10 @@ class Profile_model extends CI_Model
     {
          $this->load->helper('url');
 
-         $slug = url_title($this->input->post('first_name'), 'dash', TRUE);
+         $slug = url_title($this->input->post('FirstName'), 'dash', TRUE);
 
          $data = array(
-            'first_name' => $this->input->post('first_name'),
+            'FirstName' => $this->input->post('FirstName'),
             'id' => $slug,
             'email' => $this->input->post('email')
          );
@@ -169,11 +169,11 @@ class Profile_model extends CI_Model
                     $newdata = array(
                         'email' => $row->email,
                         'id' => $row->id,
-                        'status'=> $row->i_am_a,
-                        'first_name'=> $row->first_name,
-                        'last_name'=> $row->last_name,
-                        'picture'=> $row->picture, 
-                        'bio'     => $row->bio
+                        'status'=> $row->I_Am_A,
+                        'FirstName'=> $row->FirstName,
+                        'LastName'=> $row->LastName,
+                        'Picture'=> $row->Picture, 
+                        'Bio'     => $row->Bio
                     );
                         $this->session->set_userdata($newdata); 
                  return TRUE;    

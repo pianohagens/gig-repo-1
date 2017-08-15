@@ -29,18 +29,18 @@ public class Newprofile1DE {
     driver.findElement(By.xpath("(//a[contains(text(),'Add a Profile')])[2]")).click();
     driver.findElement(By.id("userfile")).clear();
     driver.findElement(By.id("userfile")).sendKeys("/Users/Lugano/Desktop/school/sp17/ITC260PHP/tests/bonesAUTOMATIONKEEPHERE.jpg");
-    driver.findElement(By.id("first_name")).clear();
-    driver.findElement(By.id("first_name")).sendKeys("Bones");
-    driver.findElement(By.id("last_name")).clear();
-    driver.findElement(By.id("last_name")).sendKeys("Hillman");
+    driver.findElement(By.id("FirstName")).clear();
+    driver.findElement(By.id("FirstName")).sendKeys("Bones");
+    driver.findElement(By.id("LastName")).clear();
+    driver.findElement(By.id("LastName")).sendKeys("Hillman");
     driver.findElement(By.id("email")).clear();
     driver.findElement(By.id("email")).sendKeys("bones@example.com");
     driver.findElement(By.id("password")).clear();
     driver.findElement(By.id("password")).sendKeys("test");
     driver.findElement(By.id("re_password")).clear();
     driver.findElement(By.id("re_password")).sendKeys("test");
-    driver.findElement(By.name("bio")).clear();
-    driver.findElement(By.name("bio")).sendKeys("test");
+    driver.findElement(By.name("Bio")).clear();
+    driver.findElement(By.name("Bio")).sendKeys("test");
     driver.findElement(By.name("Submit")).click();
   }
 

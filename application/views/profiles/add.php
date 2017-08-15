@@ -46,7 +46,7 @@ $this->load->view($this->config->item('theme') . 'header'); //Loads Bootswatch t
           <legend><h2><strong>Add Profile</strong></h2></legend>
         </div>
         <div class="form-group">
-            <label for="i_am_a" class="col-lg-3 control-label">
+            <label for="I_Am_A" class="col-lg-3 control-label">
                     
             </label>
             <div class="col-lg-6">
@@ -54,7 +54,7 @@ $this->load->view($this->config->item('theme') . 'header'); //Loads Bootswatch t
             </div>
         </div>
         <div class="form-group">
-            <label for="i_am_a" class="col-lg-3 control-label">
+            <label for="I_Am_A" class="col-lg-3 control-label">
                     
             </label>
             
@@ -64,10 +64,10 @@ $this->load->view($this->config->item('theme') . 'header'); //Loads Bootswatch t
         </div>
         
         <div class="form-group">
-            <?php echo form_error('i_am_a'); ?>
-            <label for="i_am_a" class="col-lg-3 control-label">I am</label>
+            <?php echo form_error('I_Am_A'); ?>
+            <label for="I_Am_A" class="col-lg-3 control-label">I am</label>
           <div class="col-lg-6">
-            <select name="i_am_a" id="i_am_a" class="form-control">
+            <select name="I_Am_A" id="I_Am_A" class="form-control">
               <option value="employee">Employee</option>
               <option value="employer">Employer</option>
             </select>
@@ -75,20 +75,20 @@ $this->load->view($this->config->item('theme') . 'header'); //Loads Bootswatch t
         </div>
 
         <div class="form-group">
-          <label for="first_name" class="col-lg-3 control-label">First Name</label>
+          <label for="FirstName" class="col-lg-3 control-label">First Name</label>
             
           <div class="col-lg-6">
-            <?php echo form_error('first_name'); ?>
-            <input id="first_name" class="form-control" type="text" name="first_name"  value="<?php echo set_value('first_name'); ?>">
+            <?php echo form_error('FirstName'); ?>
+            <input id="FirstName" class="form-control" type="text" name="FirstName"  value="<?php echo set_value('FirstName'); ?>">
           </div>
         </div>
 
         <div class="form-group">
-          <label for="last_name" class="col-lg-3 control-label">Last Name</label>
+          <label for="LastName" class="col-lg-3 control-label">Last Name</label>
             
           <div class="col-lg-6">
-            <?php echo form_error('last_name'); ?>
-            <input id="last_name" class="form-control" type="text" name="last_name"  value="<?php echo set_value('last_name'); ?>">
+            <?php echo form_error('LastName'); ?>
+            <input id="LastName" class="form-control" type="text" name="LastName"  value="<?php echo set_value('LastName'); ?>">
           </div>
           
         </div>
@@ -127,16 +127,16 @@ $this->load->view($this->config->item('theme') . 'header'); //Loads Bootswatch t
         <div class="form-group">
           <label for="languages" class="col-lg-3 control-label">Bio</label>
           <div class="col-lg-3">
-            <?php echo form_error('bio'); ?>
-            <?php echo form_textarea( array( 'name' => 'bio', 'rows' => '5', 'cols' => '53', 'value' => set_value('bio') ) )?>
+            <?php echo form_error('Bio'); ?>
+            <?php echo form_textarea( array( 'name' => 'Bio', 'rows' => '5', 'cols' => '53', 'value' => set_value('Bio') ) )?>
           </div>
           
         </div>
         
         <div class="form-group">
-          <label for="subscribed_to_newsletters" class="col-lg-3 control-label">Subscribe to Newsletter?</label>           
+          <label for="NewsletterSubscriber" class="col-lg-3 control-label">Subscribe to Newsletter?</label>           
           <div class="col-lg-6">
-            <input id="subscribed_to_newsletters" class="form-control" type="checkbox" name="subscribed_to_newsletters" value="1" checked>
+            <input id="NewsletterSubscriber" class="form-control" type="checkbox" name="NewsletterSubscriber" value="1" checked>
           </div>
         </div>
         

@@ -104,7 +104,7 @@ class Profile extends CI_Controller {
 					//echo "<p>This page is empty!</p>";
 			}
 
-			//$data['first_name'] = $data['profile']['first_name'];
+			//$data['FirstName'] = $data['profile']['FirstName'];
 			$this->load->view('profiles/view', $data);
 
 	}#end view()
@@ -153,14 +153,14 @@ class Profile extends CI_Controller {
             ;
             // build array for the model
             $form_data = array(
-                'i_am_a' => set_value('i_am_a'),
-                'first_name' => set_value('first_name'),
-                'last_name'  => set_value('last_name'),
+                'I_Am_A' => set_value('I_Am_A'),
+                'FirstName' => set_value('FirstName'),
+                'LastName'  => set_value('LastName'),
                 'password'   => set_value('password'),
-                'picture'    => $pic_id,
+                'Picture'    => $pic_id,
                 'email'      => set_value('email'),
-                'bio'  => set_value('bio'),
-                'subscribed_to_newsletters' => set_value('subscribed_to_newsletters')
+                'Bio'  => set_value('Bio'),
+                'NewsletterSubscriber' => set_value('NewsletterSubscriber')
                 
             );
             //hash password here
@@ -195,12 +195,12 @@ class Profile extends CI_Controller {
          $data['title'] = 'Edit Profile';
         if ($this->session->logged_in == TRUE)
         {//if logged get all data from session
-                $data['i_am'] = $this->session->status;
-                $data['first_name'] = $this->session->first_name;
-                $data['last_name'] = $this->session->last_name;
+                $data['I_Am_A'] = $this->session->status;
+                $data['FirstName'] = $this->session->FirstName;
+                $data['LastName'] = $this->session->LastName;
                 $data['email'] = $this->session->email;
-                $data['picture'] = $this->session->picture;
-                $data['bio'] = $this->session->bio;
+                $data['Picture'] = $this->session->Picture;
+                $data['Bio'] = $this->session->Bio;
                  
             
         }else{//redirect to login page
@@ -210,12 +210,12 @@ class Profile extends CI_Controller {
         if (isset($_POST['Submit']))
         {//save update
             //validate the form 
-                $this->form_validation->set_rules('i_am_a', 'I am a', 'required');
-                $this->form_validation->set_rules('first_name', 'First Name', 'required');
-                $this->form_validation->set_rules('last_name', 'Last Name', 'required');
+                $this->form_validation->set_rules('I_Am_A', 'I am a', 'required');
+                $this->form_validation->set_rules('FirstName', 'First Name', 'required');
+                $this->form_validation->set_rules('LastName', 'Last Name', 'required');
                 $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
                 $this->form_validation->set_rules('userfile', 'userfile');
-                $this->form_validation->set_rules('bio', 'bio', 'required');    
+                $this->form_validation->set_rules('Bio', 'Bio', 'required');    
                   
             if ($this->form_validation->run() == FALSE) // validation hasn't been passed
             { 
@@ -238,14 +238,14 @@ class Profile extends CI_Controller {
                         {
                                 $data = array('upload_data' => $this->upload->data());
                                 $pic_id = $this->upload->data('file_name');
-                                if (file_exists('./img/'.$this->session->picture)){
-                                    if ($this->session->picture !="picID.jpg"){
-                                        unlink('./img/'.$this->session->picture);    
+                                if (file_exists('./img/'.$this->session->Picture)){
+                                    if ($this->session->Picture !="picID.jpg"){
+                                        unlink('./img/'.$this->session->Picture);    
                                     }
                                     
                                 }
                                   $newdata = array(
-                                    'picture'=> $this->upload->data('file_name'), 
+                                    'Picture'=> $this->upload->data('file_name'), 
                                 );
                                 $this->session->set_userdata($newdata);
                                 
@@ -254,7 +254,7 @@ class Profile extends CI_Controller {
                             echo  $this->upload->display_errors();
                         }
             }else{
-                $pic_id = $this->session->picture;
+                $pic_id = $this->session->Picture;
             }
             /*
             if($_POST['password']!=""){
@@ -284,13 +284,13 @@ class Profile extends CI_Controller {
             
                 //initial data
             $form_data = array(
-                'i_am_a' => set_value('i_am_a'),
-                'first_name' => set_value('first_name'),
-                'last_name'  => set_value('last_name'),
-                'picture' => $pic_id,
+                'I_Am_A' => set_value('I_Am_A'),
+                'FirstName' => set_value('FirstName'),
+                'LastName'  => set_value('LastName'),
+                'Picture' => $pic_id,
                 'email'      => set_value('email'),
-                'bio'  => set_value('bio'),
-                'subscribed_to_newsletters' => set_value('subscribed_to_newsletters')
+                'Bio'  => set_value('Bio'),
+                'NewsletterSubscriber' => set_value('NewsletterSubscriber')
             );
             //update database
             if ($this->profile_model->updateProfile($form_data) == TRUE) // the information has therefore been successfully saved in the db

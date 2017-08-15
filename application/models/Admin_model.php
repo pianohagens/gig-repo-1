@@ -54,12 +54,12 @@ class Admin_model extends CI_Model {
                     $newdata = array(
                         'email' => $row->email,
                         'id' => $row->id,
-                        'status'=> $row->i_am_a,
-                        'first_name'=> $row->first_name,
-                        'last_name'=> $row->last_name,
-                        'picture'=> $row->picture, 
+                        'status'=> $row->I_Am_A,
+                        'FirstName'=> $row->FirstName,
+                        'LastName'=> $row->LastName,
+                        'Picture'=> $row->Picture, 
                         'logged_in' => TRUE,
-                        'bio'     => $row->bio,
+                        'Bio'     => $row->Bio,
                         'pass' => $row->password
                     );
 
