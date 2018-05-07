@@ -54,8 +54,8 @@ $config['newline'] = "\r\n";
  * @author Damar Riyadi <damar@tahutek.net>
  */
 
-$config['recaptcha_sitekey'] = "6LefYxkTAAAAADdrdbMSvQupXUeBdcXraNhcnG_l";
-$config['recaptcha_secretkey'] = "6LefYxkTAAAAAISDLJz5XyQgSTw4TzeoEe_TVfpU";
+$config['recaptcha_sitekey'] = "";
+$config['recaptcha_secretkey'] = "";
 $config['lang'] = "";
 
 /**
