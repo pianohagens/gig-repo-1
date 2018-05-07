@@ -20,7 +20,7 @@ $config['nav-active'] = '';//will change in controller to add active class to na
 */
 
 $config['protocol'] = 'smtp';
-$config['smtp_host'] = 'ssl://pianohagens.gmail.com';
+$config['smtp_host'] = 'ssl://.gmail.com';
 $config['smtp_user'] = 'pianohagens@gmail.com';
 $config['smtp_pass'] = '';
 $config['smtp_port'] = '465';
