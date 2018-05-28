@@ -63,6 +63,7 @@ class Admin_model extends CI_Model {
                         'pass' => $row->password
                     );
 
+                        $this->load->library('session');//05232018_add session
                         $this->session->set_userdata($newdata); 
                         redirect('admin/');
                     }else{

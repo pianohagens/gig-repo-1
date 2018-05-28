@@ -108,12 +108,16 @@ class Venues_model extends CI_Model {
             'VenueExpirationDate' => $this->input->post('VenueExpirationDate') 
             
          );
-        //$this->db-post('VenuePostDate', 'NOW()', FALSE);
         
-        
-       
-        
+        //$this->db-post('VenuePostDate', 'NOW()', FALSE);        
+        $dataTwo = array(
+        'VenueTypeKey' => NULL,
+        'VenueTypeName' => $this->input->post('VenueTypeName'),
+        );
+        //$this->db-post('VenuePostDate', 'NOW()', FALSE);        
         return $this->db->insert('Venue', $data);
+        return $this->db->insert('VenueType', $dataTwo);
+        
 
 }//end addVenues method
 }//end class

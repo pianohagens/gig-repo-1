@@ -40,6 +40,7 @@ class Welcome extends CI_Controller {
  * @param none
  * @return none
  * @todo none
+ *get_gigs
  */
 	public function index()
 	{

@@ -20,8 +20,8 @@ $config['nav-active'] = '';//will change in controller to add active class to na
 */
 
 $config['protocol'] = 'smtp';
-$config['smtp_host'] = 'ssl://smtp.gmail.com';
-$config['smtp_user'] = 'your email';
+$config['smtp_host'] = 'ssl://pianohagens.gmail.com';
+$config['smtp_user'] = 'pianohagens@gmail.com';
 $config['smtp_pass'] = '';
 $config['smtp_port'] = '465';
 
@@ -29,13 +29,13 @@ $config['smtp_port'] = '465';
 
 # XXX replace this with the email address to send web-contact form emails to
 
-$config['email_contact_sendto'] = "webcontactform@gigcentral.com";
+$config['email_contact_sendto'] = "pianohagens@gmail.com";
 
 // When sending automatic emails (eg, scheduled newsletters), use this as the "From" address (eg, to form noreply@gigcentral.com <GigCentral>)
 $config['autoemail_from_address'] = "noreply@gigcentral.com";
 
 // When sending automatic emails (eg, scheduled newsletters), use this as the "From" name (eg, to form noreply@gigcentral.com <GigCentral>)
-$config['autoemail_from_name'] = "GigCentral";
+$config['autoemail_from_name'] = "GigCentral_Piano";
 
 $config['charset'] = 'utf-8';
 $config['newline'] = "\r\n";
@@ -54,8 +54,8 @@ $config['newline'] = "\r\n";
  * @author Damar Riyadi <damar@tahutek.net>
  */
 
-$config['recaptcha_sitekey'] = "";
-$config['recaptcha_secretkey'] = "";
+$config['recaptcha_sitekey'] = "6LefYxkTAAAAADdrdbMSvQupXUeBdcXraNhcnG_l";
+$config['recaptcha_secretkey'] = "6LefYxkTAAAAAISDLJz5XyQgSTw4TzeoEe_TVfpU";
 $config['lang'] = "";
 
 /**
@@ -63,4 +63,4 @@ $config['lang'] = "";
 *place your site's google maps api key here
 */
 
-$config['googleMapsKey'] = "yourKeyHere";
+$config['googleMapsKey'] = "AIzaSyBMdBSzzjzVKgFQObir8kwyPhWidKEIuUM";
